@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kube-hello-world
+spec:
+  selector:
+    matchLabels:
+      app: kube-hello-world
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: kube-hello-world
+    spec:
+      containers:
+      - name: kube-hello-world
+        image: kube-hello-world:v1.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 8080
